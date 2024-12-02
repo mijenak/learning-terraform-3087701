@@ -40,12 +40,16 @@ module "blog_asg" {
   max_size = 1
 
   vpc_zone_identifier  = module.blog_vpc.public_subnets
-  alb_target_group_arn = module.blog_alb.alb_target_group_arn
 
   security_groups      = [module.blog_sg.security_group_id]
 
   image_id      = data.aws_ami.app_ami
   instance_type = var.instance_type
+}
+
+resource "aws_autoscaling_attachment" "blog_asg_to_elb" {
+  autoscaling_group_name = module.blog_asg.id
+  elb                    = module.blog_alb.id
 }
 
 module "blog_alb" {
