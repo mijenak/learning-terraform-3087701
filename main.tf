@@ -1,4 +1,4 @@
-data "aws_ami" "app_ami" {
+tdata "aws_ami" "app_ami" {
   most_recent = true
 
   filter {
@@ -15,9 +15,9 @@ data "aws_ami" "app_ami" {
 }
 
 resource "aws_instance" "web" {
-  ami             = data.aws_ami.app_ami.id
-  instance_type   = "t3.nano"  
-  security_groups = ["sg_venture1_default"]
+  ami           = data.aws_ami.app_ami.id
+  instance_type = "t3.nano"  
+  subnet_id     = "subnet-cd4c4784"
 
   tags = {
     Name = "HelloWorld"
