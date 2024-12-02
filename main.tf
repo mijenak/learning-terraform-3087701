@@ -48,8 +48,8 @@ module "blog_asg" {
 }
 
 resource "aws_autoscaling_attachment" "blog_asg_to_elb" {
-  autoscaling_group_name = module.blog_asg.id
-  elb                    = module.blog_alb.id
+  autoscaling_group_name = module.blog_asg.autoscaling_group_id
+  lb_target_group_arn    = module.blog_alb.arn
 }
 
 module "blog_alb" {
