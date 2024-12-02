@@ -17,7 +17,7 @@ data "aws_ami" "app_ami" {
 resource "aws_instance" "web" {
   ami             = data.aws_ami.app_ami.id
   instance_type   = "t3.nano"  
-  security_groups = ["sg-0ca89f3088f9a15e7"]
+  security_groups = ["sg_venture1_default"]
 
   tags = {
     Name = "HelloWorld"
