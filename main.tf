@@ -16,8 +16,7 @@ data "aws_ami" "app_ami" {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
-  instance_type = "t3.nano"  
-  subnet_id     = "arn:aws:ec2:ap-southeast-2:027542515554:subnet/subnet-cd4c4784"
+  instance_type = "t3.nano"
 
   tags = {
     Name = "HelloWorld"
